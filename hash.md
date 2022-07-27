@@ -11,7 +11,7 @@ Hash 跟 Array 有一些相似的地方，但是：
 
 ## Hash Data Syntax
 
-Hash 資料的舊語法使用 “hash rocket,” =>:
+Hash 資料的舊語法使用 “hash rocket” =>:
 
 ```ruby
 h = {:foo => 0, :bar => 1, :baz => 2}
@@ -74,9 +74,9 @@ matz # => #<Dev: @name="Matz", @language="Ruby">
 
 ## 創建一個 Hash
 
-你可以使用一個 [hash literal](literal.md#hash) 來建立一個 Hash object。
+你可以使用一個 [hash literal](https://ruby-doc.org/core-3.1.2/doc/syntax/literals_rdoc.html#label-Hash+Literals) 來建立一個 Hash object。
 
-你也可以使用 [Hash](kernel.md#hash) method 將某些 objects 轉換成 Hashes.
+你也可以使用 [Hash](https://ruby-doc.org/core-3.1.2/Kernel.html#method-i-Hash) method 將某些 objects 轉換成 Hashes.
 
 你也可以呼叫 `Hash.new` method 來建立 Hash.
 
@@ -238,10 +238,10 @@ first_key.frozen? # => true
 
 ### 使用者定義 Hash Keys
 
-Objects 必須實做 `hash` 以及 `eql?` 這兩個 method，才能被用作 Hash key.
+Objects 必須實做 `hash` 以及 `eql?` 這兩個 method，才能被用作 Hash key.  
 註: 如果 Hash 使用 `compare_by_identity`，這個條件就不須要，因為 key 的比較是看它的 object id，而不是 `hash` 和 `eql?`.
 
-Object 定義 `hash` 和 `eq?` 的基本實做，使用每個 object 能成為獨特的 key.
+Object 定義 `hash` 和 `eq?` 的基本實做，使得每個 object 能成為獨特的 key.
 通常，用戶定義的 classes 會想要覆寫這些 methods 來提供有意義的行為。
 
 hash method 的典型實做是依照這個 object 的資料，而 `eql?` 通常會是被覆寫的 `==` method 的別名：
@@ -304,10 +304,10 @@ h.default # => 0
 
 ```ruby
 counts = {foo: 42}
-counts.default # => nil (default)
+counts.default # => nil (default), 最初的預設值是 nil
 counts[:foo] = 42
 counts[:bar] # => nil
-counts.default = 0
+counts.default = 0 # 將 預設值 設為 0
 counts[:bar] # => 0
 counts.values_at(:foo, :bar, :baz) # => [42, 0, 0]
 counts.dig(:bar) # => 0
@@ -379,68 +379,68 @@ synonyms.keys # => [:hello, :world]
 
 | method | 說明 |
 | ------ | ---- |
-| `::[]`  | 根據給定的 objects 創建新的 hash 並回傳 |
-| `::new` | 回傳一個新的空 hash. |
-| `::try_convert` | 回傳根據給定物件創建的新 hash. |
+| [`::[]`](https://ruby-doc.org/core-3.1.2/Hash.html#method-c-5B-5D)  | 根據給定的 objects 創建新的 hash 並回傳 |
+| [::new](https://ruby-doc.org/core-3.1.2/Hash.html#method-c-new) | 回傳一個新的空 hash. |
+| [::try_convert](https://ruby-doc.org/core-3.1.2/Hash.html#method-c-try_convert) | 回傳根據給定物件創建的新 hash. |
 
 ### 用來設定 Hash 狀態的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `compare_by_identity` | 設定為：比較 keys 的時候只考慮 identity. |
-| `default=`      | 設定預設值 |
-| `default_proc=` | 設定 default proc |
-| `rehash`        | 通過重新計算每個 key 的 hash index 來重建 hash table. |
+| [compare_by_identity](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-compare_by_identity) | 設定為：比較 keys 的時候只考慮 identity. |
+| [default=](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-default-3D) | 設定預設值 |
+| [default_proc=](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-default_proc-3D) | 設定 default proc |
+| [rehash](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-rehash) | 通過重新計算每個 key 的 hash index 來重建 hash table. |
 
 ### 用來查詢的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `any?` | 回傳是否有任何元素滿足給定條件。 |
-| `compare_by_identity?` | 回傳比較 keys 的時候，hash 是否只考慮 identity. |
-| `default` | 回傳預設值，或給定 key 的預設值。 |
-| `default_proc` | 回傳 default proc. |
-| `empty?` | 回傳是否沒有 entries. |
-| `eql?`   | 回傳給定的 object 是否等於 self. |
-| `hash`   | 回傳整數 hash code |
-| `has_value?` | 回傳某個給定的 object 是否存在於 self 的 values. |
-| `include?`, `has_key?`, `member?`, `key?` | 回傳某個物件是否是 self 的 keys 之一 |
-| `length`, `size` | 回傳 entries 數量。 |
-| `value?` | 回傳某個給定的 object 是否存在於 self 的 values. |
+| [any?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-any-3F) | 回傳是否有任何元素滿足給定條件。 |
+| [compare_by_identity?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-compare_by_identity-3F) | 回傳比較 keys 的時候，hash 是否只考慮 identity. |
+| [default](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-default) | 回傳預設值，或給定 key 的預設值。 |
+| [default_proc](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-default_proc) | 回傳 default proc. |
+| [empty?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-empty-3F) | 回傳是否沒有 entries. |
+| [eql?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-eql-3F) | 回傳給定的 object 是否等於 self. |
+| [hash](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-hash) | 回傳整數 hash code |
+| [has_value?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-has_value-3F) | 回傳某個給定的 object 是否存在於 self 的 values. |
+| [include?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-include-3F), [has_key?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-has_key-3F), [member?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-member-3F), [key?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-key-3F) | 回傳某個物件是否是 self 的 keys 之一 |
+| [length](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-length), [size](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-size) | 回傳 entries 數量。 |
+| [value?](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-value-3F) | 回傳某個給定的 object 是否存在於 self 的 values. |
 
 ### 用來比較的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `#<`  | 回傳：self 是否是給定 object 的真子集(proper subset). |
-| `#<=` | 回傳：self 是否是給定 object 的子集合(subset). |
-| `#==` | 回傳：給定 object 是否等於 self. |
-| `#>`  | 回傳：self 是否是給定 object 的 proper superset. |
-| `#>=` | 回傳：self 是否是給定 object 的 superset. |
+| [#<](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-3C)  | 回傳：self 是否是給定 object 的真子集(proper subset). |
+| [#<=](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-3C-3D) | 回傳：self 是否是給定 object 的子集合(subset). |
+| [#==](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-3D-3D) | 回傳：給定 object 是否等於 self. |
+| [#>](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-3E) | 回傳：self 是否是給定 object 的 proper superset. |
+| [#>=](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-3E-3D) | 回傳：self 是否是給定 object 的 superset. |
 
-### Methods for Fetching
+### 用來 獲取(fetching) 的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `[]`    | 給定某個 key, 回傳對應的 value |
-| `assoc` | 給定某個 key, 回傳一個包含兩個 element 的 array，第一個 element 是 key，第二個 element 是它的 value. |
-| `dig`   | 給定某個 key 以及更多的 arguments，回傳巢狀物件裡的物件。 |
-| `fetch` | 給定某個 key, 回傳對應的 value |
-| `fetch_values` | 給定多個 key, 回傳 array 包含對應的 values. |
-| `key`  | 給定某個 value, 回傳第一個符合的 entry 的 key |
-| `keys` | 回傳一個 array 包含全部的 keys. |
-| `rassoc` | 給定某個 value, 找到第一筆符合的 entry, 回傳一個 array，包含 key 跟 value 兩個 elements. |
-| `values` | 回傳一個 array 包含全部的 values. |
-| `values_at` | 給定多個 key, 回傳 array 包含對應的 values. |
+| [`[]`](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-5B-5D) | 給定某個 key, 回傳對應的 value |
+| [assoc](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-assoc) | 給定某個 key, 回傳一個包含兩個 element 的 array，第一個 element 是 key，第二個 element 是它的 value. |
+| [dig](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-dig) | 給定某個 key 以及更多的 arguments，回傳巢狀物件裡的物件。 |
+| [fetch](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-fetch) | 給定某個 key, 回傳對應的 value |
+| [fetch_values](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-fetch_values) | 給定多個 key, 回傳 array 包含對應的 values. |
+| [key](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-key) | 給定某個 value, 回傳第一個符合的 entry 的 key |
+| [keys](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-keys) | 回傳一個 array 包含全部的 keys. |
+| [rassoc](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-rassoc) | 給定某個 value, 找到第一筆符合的 entry, 回傳一個 array，包含 key 跟 value 兩個 elements. |
+| [values](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-values) | 回傳一個 array 包含全部的 values. |
+| [values_at](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-values_at) | 給定多個 key, 回傳 array 包含對應的 values. |
 
 ### 用於 Assigning 的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `[]=`, `store` | 將「給定的 key」與「給定的值」建立關聯。 |
-| `merge` | 將 self 複製為一份新 hash，然後將給定的每一個 hash 合併到這個新 hash，然後回傳。 |
-| `merge!`, `update` | 將每個給定的 hash 合併到 self. |
-| `replace` | 將 self 的全部內容替換為給定的 hash 的內容。 |
+| [`[]=`](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-5B-5D-3D), [store](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-store) | 將「給定的 key」與「給定的值」建立關聯。 |
+| [merge](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-merge) | 將 self 複製為一份新 hash，然後將給定的每一個 hash 合併到這個新 hash，然後回傳。 |
+| [merge!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-merge-21), [update](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-update) | 將每個給定的 hash 合併到 self. |
+| [replace](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-replace) | 將 self 的全部內容替換為給定的 hash 的內容。 |
 
 ### 用於刪除的 Methods
 
@@ -448,38 +448,56 @@ synonyms.keys # => [:hello, :world]
 
 | method | 說明 |
 | ------ | ---- |
-| `clear` | 從 self 中刪除所有 entries. |
-| `compact!` | 從 self 中刪除所有值為 nil 的 entries. |
-| `delete` | 刪除給定 key 的 entry. |
-| `delete_if` | 刪除給定 block 選擇的 entries. |
-| `filter!`, `select!` | 僅保留給定 block 選擇的那些 entries. |
-| `keep_if` | 僅保留給定 block 選擇的那些 entries. |
-| `reject!` | 刪除給定 block 選擇的 entries. |
-| `shift` | 移除並回傳第一個 entry. |
+| [clear](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-clear) | 從 self 中刪除所有 entries. |
+| [compact!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-compact-21) | 從 self 中刪除所有值為 nil 的 entries. |
+| [delete](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-delete) | 刪除給定 key 的 entry. |
+| [delete_if](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-delete_if) | 刪除給定 block 選擇的 entries. |
+| [filter!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-filter-21), [select!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-select-21) | 僅保留給定 block 選擇的那些 entries. |
+| [keep_if](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-keep_if) | 僅保留給定 block 選擇的那些 entries. |
+| [reject!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-reject-21) | 刪除給定 block 選擇的 entries. |
+| [shift](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-shift) | 移除並回傳第一個 entry. |
 
 這些 methods 回傳 self 的副本，其中刪除了一些條目：
 
 | method | 說明 |
 | ------ | ---- |
-| `compact` | 回傳刪除所有 nil 值條目的 self 副本。 |
-| `except`  | 回傳 self 的副本，其中刪除了指定 keys 的 entries. |
-| `filter`, `select` | 回傳 self 的副本，其中僅包含給定 block 選擇的那些 entries. |
-| `reject` | 回傳 self 的副本，其中刪除了給定 blok 指定的 entries. |
-| `slice` | 回傳一個 hash，包含給定 keys 的 entries. |
+| [compact](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-compact) | 回傳刪除所有 nil 值條目的 self 副本。 |
+| [except](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-except) | 回傳 self 的副本，其中刪除了指定 keys 的 entries. |
+| [filter](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-filter), [select](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-select) | 回傳 self 的副本，其中僅包含給定 block 選擇的那些 entries. |
+| [reject](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-reject) | 回傳 self 的副本，其中刪除了給定 blok 指定的 entries. |
+| [slice](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-slice) | 回傳一個 hash，包含給定 keys 的 entries. |
 
 ### 用於 Iterating 的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `each`, `each_pair` | 使用每一對 key-value pair 呼叫給定的 block. |
-| `each_key` | 使用每一個 key 呼叫給定的 block. |
-| `each_value` | 使用每一個 value 呼叫給定的 block. |
+| [each](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-each), [each_pair](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-each_pair) | 使用每一對 key-value pair 呼叫給定的 block. |
+| [each_key](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-each_key) | 使用每一個 key 呼叫給定的 block. |
+| [each_value](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-each_value) | 使用每一個 value 呼叫給定的 block. |
 
 ### 用於轉換的 Methods
 
 | method | 說明 |
 | ------ | ---- |
-| `inspect`, `to_s` | 回傳一個包含全部 hash entries 的新字串。 |
-| `to_a` | 回傳一個由 2-element array 組成的新 array；每個 2-element array 都包含一對來自 self 的 key-value. |
-| `to_h` | 如果 selft 是 Hash，就回傳 self；如果 self 是 Hash 的 subclass，就回傳包含來自 self 的 entries Hash. |
-| `to_proc` | 回傳一個 proc, 這個 proc 接受一個 key 參數，會將給定的 key 對應到它的 value. |
+| [inspect](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-inspect), [to_s](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-to_s) | 回傳一個包含全部 hash entries 的新字串。 |
+| [to_a](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-to_a) | 回傳一個由 2-element array 組成的新 array；每個 2-element array 都包含一對來自 self 的 key-value. |
+| [to_h](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-to_h) | 如果 selft 是 Hash，就回傳 self；如果 self 是 Hash 的 subclass，就回傳包含來自 self 的 entries Hash. |
+| [to_hash](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-to_hash) | 回傳 self |
+| [to_proc](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-to_proc) | 回傳一個 proc, 這個 proc 接受一個 key 參數，會將給定的 key 對應到它的 value. |
+
+### 轉換 Keys 跟 Values 的方法
+
+| method | 說明 |
+| ------ | ---- |
+| [transform_keys](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-transform_keys) | 回傳 self 的副本，修改其中的 keys. |
+| [transform_keys!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-transform_keys-21) | 修改 self 裡面的 keys |
+| [transform_values](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-transform_values) | 回傳 self 的副本，修改其中的 values. |
+| [transform_values!](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-transform_values-21) | 修改 self 裡面的 values |
+
+### 其他方法
+
+| method | 說明 |
+| ------ | ---- |
+| [flatten](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-flatten) |
+回傳 self 平坦化之後的 array |
+| [invert](https://ruby-doc.org/core-3.1.2/Hash.html#method-i-invert) | 回傳一個新的 hash, 其中的 key 與 value 對調 |
