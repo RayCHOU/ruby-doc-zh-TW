@@ -47,3 +47,13 @@ puts(obj, ...) → nil
 
 如果沒有傳進任何參數，會寫出一個換行。
 
+## write
+
+```ruby
+text = <<~EOT
+  This is line one.
+  This is the second line.
+  This is the third line.
+EOT
+File.write('t.txt', text) # 將 text 內容寫到 t.txt
+```

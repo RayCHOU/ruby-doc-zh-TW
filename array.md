@@ -234,7 +234,7 @@ arr = [2, 5, 6, 556, 6, 6, 8, 9, 0, 123, 556]
 arr.uniq #=> [2, 5, 6, 556, 8, 9, 0, 123]
 ```
 
-## Iterating (遍歷) over Arrays
+## Iterating over (遍歷) Arrays
 
 就跟其他 include 了 `Enumerable` 這個 module 的其他 classes 一樣，`Array` 也有 `each` 這個方法，它定義了哪些元素要被 iterated、如何被 iterated.  
 以 Array 的 `each` 來說，Array 裡的所有元素都會依序被傳送給提供的 block.

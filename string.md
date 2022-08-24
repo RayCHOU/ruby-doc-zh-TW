@@ -30,6 +30,7 @@
 ### Percent Literals
 
 適用情境：單行字串、字串中有雙引號、需要 interpolation
+
 ```ruby
 %(<tr><td class="name">#{name}</td>)
 ```
