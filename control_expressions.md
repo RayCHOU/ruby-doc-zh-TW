@@ -2,7 +2,7 @@
 
 參考 Ruby-Doc => [Control Expressions](https://ruby-doc.org/core-3.1.2/doc/syntax/control_expressions_rdoc.html)
 
-Ruby 有多種方式可以控制程式的執行。這裡所描述的所有 expressions (表示式) 都會回傳一個值。
+Ruby 有多種方式可以控制程式的執行。這裡所描述的所有 expressions (表達式；表示式；運算式；算式) 都會回傳一個值。
 
 在這些 control expressions 裡的測試條件，`nil` 跟 `false` 是 false-values (求值結果為假)，其他所有物件都是 true-values (求值結果為真)。在這份文件裡，true 就表示 true-value，false 就表示 false-value。
 
@@ -475,14 +475,12 @@ p result
 
 Ruby 的語法會區分 statements 和 expressions。所有 expressions 都是 statements（一個 expression 是 statement 的一種類型），但並非所有 statements 都是 expressions。語法的某些部分接受 expressions 而不接受其他類型的 statements，這導致看起來相似的程式碼被不同地解析。
 
-例如，當不是做為 modifier 的時候，`if`, `else`, `while`, `until`, 和 `begin` 是 expressions (也是)。然而，當它們做為 modifier 使用的時候，`if`, `else`, `while`, `until` 和 `rescue` 是 statements 但不是 expressions。
+例如，當不是做為 modifier 的時候，`if`, `else`, `while`, `until`, 和 `begin` 是 expressions (也是 statements)。然而，當它們做為 modifier 使用的時候，`if`, `else`, `while`, `until` 和 `rescue` 是 statements 但不是 expressions。
 
 ```ruby
 if true; 1 end # expression (and therefore statement)
 1 if true      # statement (not expression)
 ```
-
-Statements that are not expressions cannot be used in contexts where an expression is expected, such as method arguments.
 
 不是 expressions 的 statements 不能在需要 expression 的上下文中使用，例如 method 的參數。
 
